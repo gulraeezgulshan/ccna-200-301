@@ -1,6 +1,6 @@
-------------------
-Configuration SW1:
-------------------
+-----------------
+Configuration SW1
+-----------------
 
 enable
 configure terminal
@@ -15,14 +15,18 @@ vlan 20
 name IT
 exit
 !
-int range f0/1,f0/3
+int range f0/1
 switchport mode access
 switchport access vlan 10
 exit
 !
-int range f0/2,f0/4
+int range f0/2
 switchport mode access
 switchport access vlan 20
+exit
+!
+int f0/3
+switchport mode trunk
 exit
 !
 exit
@@ -30,22 +34,26 @@ copy running-config startup-config
 
 !
 
-------------------
-Configuration R1:
-------------------
+-----------------
+Configuration R1
+-----------------
 
 enable
 configure terminal
 !
 hostname R1
 !
-int f0/0
+int f0/0.10
+encapsulation dot1Q 10
 ip address 192.168.10.1 255.255.255.0
-no shut
 exit
 !
-int f0/1
+int f0/0.20
+encapsulation dot1Q 20
 ip address 192.168.20.1 255.255.255.0
+exit
+!
+int f0/0
 no shut
 exit
 !
@@ -53,3 +61,4 @@ exit
 copy running-config startup-config
 
 !
+

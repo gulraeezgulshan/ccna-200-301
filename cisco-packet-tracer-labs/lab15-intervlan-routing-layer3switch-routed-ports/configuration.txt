@@ -1,0 +1,108 @@
+-----------------
+Configuration SW1
+-----------------
+
+enable
+configure terminal
+!
+hostname SW1
+!
+ip routing
+!
+vlan 10
+name SALES
+exit
+!
+vlan 20
+name IT
+exit
+!
+int f0/1
+switchport mode access
+switchport access vlan 10
+exit
+!
+int f0/2
+switchport mode access
+switchport access vlan 20
+exit
+!
+int g0/1
+no switchport
+ip address 10.1.1.1 255.255.255.252
+no shut
+exit
+!
+int vlan 10
+ip address 192.168.10.1 255.255.255.0
+no shut
+exit
+!
+int vlan 20
+ip address 192.168.20.1 255.255.255.0
+no shut
+exit
+!
+ip route 192.168.30.0 255.255.255.0 g0/1
+!
+exit
+copy run start
+
+!
+
+-----------------
+Configuration R1
+-----------------
+
+enable
+configure terminal
+!
+hostname R1
+!
+int g0/0
+ip address 10.1.1.2 255.255.255.252
+no shut
+exit
+!
+int g0/1.10
+encapsulation dot1Q 10
+ip address 192.168.30.2 255.255.255.0
+exit
+!
+int g0/1
+no shut
+exit
+!
+ip route 192.168.10.0 255.255.255.0 g0/0
+ip route 192.168.20.0 255.255.255.0 g0/0
+!
+exit
+copy run start
+
+!
+
+-----------------
+Configuration SW2
+-----------------
+enable
+configure terminal
+!
+hostname SW2
+!
+vlan 10
+name SALES
+exit
+!
+int f0/1
+switchport mode access
+switchport access vlan 10
+exit
+!
+int g0/1
+switchport mode trunk
+exit
+!
+exit
+copy run start
+
+!

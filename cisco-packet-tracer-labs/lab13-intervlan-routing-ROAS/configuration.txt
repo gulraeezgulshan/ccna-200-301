@@ -15,12 +15,12 @@ vlan 20
 name IT
 exit
 !
-int range f0/1
+int f0/1
 switchport mode access
 switchport access vlan 10
 exit
 !
-int range f0/2
+int f0/2
 switchport mode access
 switchport access vlan 20
 exit

@@ -1,0 +1,90 @@
+!!!! Configuring SW1
+!
+enable
+configure terminal
+!
+hostname SW1
+!
+ip routing
+!
+vlan 2
+name LEFT
+exit
+!
+vlan 3
+name RIGHT
+exit
+!
+interface range f0/1-2
+switchport mode access
+switchport acces vlan 2
+exit
+!
+interface range gi0/1-2
+no switchport
+no ip address
+channel-group 1 mode on
+exit
+!
+interface port-channel 1
+no switchport
+ip address 10.1.12.1 255.255.255.0
+exit
+!
+int vlan 2
+ip address 10.1.2.1 255.255.255.0
+no shutdown
+exit
+!
+ip route 10.1.3.0 255.255.255.0 10.1.12.2
+end
+!
+copy running-config startup-config
+
+!
+
+
+!!!! Configuring SW2
+!
+enable
+configure terminal
+!
+hostname SW2
+!
+ip routing
+!
+vlan 2
+name LEFT
+exit
+!
+vlan 3
+name RIGHT
+exit
+!
+interface range f0/1-2
+switchport mode access
+switchport acces vlan 3
+exit
+!
+interface range gi0/1-2
+no switchport
+no ip address
+channel-group 1 mode on
+exit
+!
+interface port-channel 1
+no switchport
+ip address 10.1.12.2 255.255.255.0
+exit
+!
+int vlan 3
+ip address 10.1.3.1 255.255.255.0
+no shutdown
+exit
+!
+ip route 10.1.2.0 255.255.255.0 10.1.12.1
+end
+!
+copy running-config startup-config
+
+!

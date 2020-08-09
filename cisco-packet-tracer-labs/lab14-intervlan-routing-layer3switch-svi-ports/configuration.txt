@@ -1,6 +1,6 @@
------------------
-Configuration SW1
------------------
+!-----------------
+!Configuration SW1
+!-----------------
 
 enable
 config terminal
@@ -17,22 +17,22 @@ vlan 20
 name IT
 exit
 !
-int f0/1
+interface f0/1
 switchport mode access
 switchport access vlan 10
 exit
 !
-int f0/2
+interface f0/2
 switchport mode access
 switchport access vlan 20
 exit
 !
-int vlan 10
+interface vlan 10
 ip address 192.168.10.1 255.255.255.0
 no shut
 exit
 !
-int vlan 20
+interface vlan 20
 ip address 192.168.20.1 255.255.255.0
 no shut
 exit

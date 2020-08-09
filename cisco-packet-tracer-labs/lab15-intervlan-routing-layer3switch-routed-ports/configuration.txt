@@ -1,6 +1,6 @@
------------------
-Configuration SW1
------------------
+!-----------------
+!Configuration SW1
+!-----------------
 
 enable
 configure terminal
@@ -50,9 +50,9 @@ copy run start
 
 !
 
------------------
-Configuration R1
------------------
+!-----------------
+!Configuration R1
+!-----------------
 
 enable
 configure terminal
@@ -81,9 +81,9 @@ copy run start
 
 !
 
------------------
-Configuration SW2
------------------
+!-----------------
+!Configuration SW2
+!-----------------
 enable
 configure terminal
 !

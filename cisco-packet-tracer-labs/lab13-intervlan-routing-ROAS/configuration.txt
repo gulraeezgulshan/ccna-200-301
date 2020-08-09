@@ -1,6 +1,6 @@
------------------
-Configuration SW1
------------------
+!-----------------
+!Configuration SW1
+!-----------------
 
 enable
 configure terminal
@@ -34,9 +34,9 @@ copy running-config startup-config
 
 !
 
------------------
-Configuration R1
------------------
+!-----------------
+!Configuration R1
+!-----------------
 
 enable
 configure terminal
